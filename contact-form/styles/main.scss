@@ -2,6 +2,18 @@ $font-clr:rgb(37, 33, 33);
 $color-inp: rgb(221, 210, 210);
 $color-main:coral;
 
+@mixin decor-line($left,$right){
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: $left;
+    right: $right;
+    width: 20px;
+    height: 1px;
+    background-color: $color-main;
+    opacity: 0.7;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -25,11 +37,34 @@ $color-main:coral;
     display: flex;
     flex-direction: column;
     padding: 50px 50px 60px;
+    border-radius: 2rem;
+    position: relative;
     &__title{
         text-align: center;
         color: $font-clr;
         font-weight: 700;
+        position: relative;
         margin-bottom: 45px;
+        transition: 0.5s ease;
+        &::before{
+            @include decor-line(45px,unset);
+            transition: 1.5s ease;
+        }
+        &::after{
+            @include decor-line(unset,45px);
+            transition: 1.5s ease;
+        }
+        &:hover{
+            font-size: 2.2rem;
+            &::before{
+                @include decor-line(30px,unset);
+                height: 3px;
+            }
+            &::after{
+                @include decor-line(unset,30px);
+                height: 3px;
+            }
+        }
     }
     &__input{
         width: 100%;
@@ -41,6 +76,10 @@ $color-main:coral;
         background-color: $color-inp;
         border: none;
         outline: none;
+        transition: 0.8s ease;
+        &:focus{
+            background-color: $color-inp + green;
+        }
     }
     &__textarea{
         width: 100%;
@@ -52,6 +91,10 @@ $color-main:coral;
         border: none;
         outline: none;
         resize: none;
+        transition: 0.5s ease;
+        &:focus{
+            background-color: $color-inp + green;
+        }
     }
     &__button {
         background: $color-main;
@@ -62,6 +105,77 @@ $color-main:coral;
         color: $color-inp;
         font-weight: 900;
         font-size: 1.2rem;
+        transition: 0.5s ease;
+        &:hover{
+            opacity: 0.9;
+        }
+        &:active{
+            background: $font-clr;
+        }
     }
 }
-
+.title__underline{
+    position: absolute;
+    background-color: $color-inp;
+    width: 70px;
+    height: 1px;
+    bottom: -5px;
+    right: calc(50% - 35px);
+}
+.top-decoration{
+    position: absolute;
+    width: 60px;
+    height: 20px;
+    border-radius: 2em;
+    background-color: white;
+    right: -2em;
+    &::before{
+        content: '';
+        position: absolute;
+        width: 40px;
+        height: 20px;
+        border-radius: 2em;
+        background-color: $color-main;
+        bottom: -20px;
+        right: 10px;
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        width: 40px;
+        height: 20px;
+        border-radius: 2em;
+        background-color: white;
+        bottom: -40px;
+        right: 10px;
+    }
+}
+.bottom-decoration{
+    position: absolute;
+    width: 30px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: white;
+    bottom: 40px;
+    left: -10px;
+    &::before{
+        content: '';
+        position: absolute;
+        width: 40px;
+        height: 20px;
+        border-radius: 20px;
+        background-color: $color-main;
+        bottom: 20px;
+        left: 0px;
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        width: 70px;
+        height: 20px;
+        border-radius: 20px;
+        background-color: white;
+        bottom: 40px;
+        left: -30px;
+    }
+}
