@@ -78,7 +78,8 @@
 }
 
 .contact-form__title:hover {
-  font-size: 2.2rem;
+  -webkit-transform: translate(-10px, -5px);
+          transform: translate(-10px, -5px);
 }
 
 .contact-form__title:hover::before {

@@ -55,7 +55,8 @@ $color-main:coral;
             transition: 1.5s ease;
         }
         &:hover{
-            font-size: 2.2rem;
+            transform: translate(-10px,-5px);
+            // font-size: 2.2rem;
             &::before{
                 @include decor-line(30px,unset);
                 height: 3px;
@@ -179,3 +180,4 @@ $color-main:coral;
         left: -30px;
     }
 }
+
